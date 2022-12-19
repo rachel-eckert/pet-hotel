@@ -1,12 +1,15 @@
-/* Here is where you will configure the store 
-
-*/ 
-
 import { configureStore } from "@reduxjs/toolkit";
 
+import roomReducer from "../reducers/roomSlice";
+import petReducer from "../reducers/petSlice";
+import singleRoomReducer from "../reducers/singleRoomSlice";
+import singlePetReducer from "../reducers/singlePetSlice";
 
-const store = configureStore({
-  reducer: {}
+export const store = configureStore({
+  reducer: {
+    rooms: roomReducer,
+    pets: petReducer,
+    room: singleRoomReducer,
+    pet: singlePetReducer,
+  },
 });
-
-export default store;
