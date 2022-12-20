@@ -38,7 +38,7 @@ const seed = async () => {
       imageUrl:
         "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F06%2F14%2Fsiberian-husky-puppy-grass-146571433-2000.jpg",
       food: "Puppy Chow",
-      age: 0,
+      age: 0.5,
       roomId: tundra.id,
     });
     const milo = await Pet.create({

@@ -44,4 +44,8 @@ const roomSlice = createSlice({
   },
 });
 
+export const roomList = (state) => {
+  return state.rooms;
+};
+
 export default roomSlice.reducer;

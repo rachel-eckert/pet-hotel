@@ -32,7 +32,7 @@ router.post("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const destroyed = await RoomPreferencesTwoTonedestroy({
+    const destroyed = await Room({
       where: { id: req.params.id },
     });
     res.json(destroyed);

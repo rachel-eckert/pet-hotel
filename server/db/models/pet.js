@@ -26,7 +26,7 @@ module.exports = db.define("students", {
     defaultValue: "Purina",
   },
   age: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL,
     allowNull: false,
   },
   roomId: {

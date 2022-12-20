@@ -41,4 +41,8 @@ const petSlice = createSlice({
   },
 });
 
+export const petList = (state) => {
+  return state.pets;
+};
+
 export default petSlice.reducer;
