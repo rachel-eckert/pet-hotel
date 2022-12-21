@@ -20,7 +20,11 @@ const SinglePet = () => {
       container
       justifyContent="center"
       alignItems="center"
-      direction="column">
+      direction="column"
+      sx={{
+        bgcolor: "#87BBA2",
+        pt: 3,
+      }}>
       <Box
         justifyContent="center"
         sx={{

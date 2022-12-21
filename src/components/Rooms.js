@@ -33,7 +33,10 @@ const Rooms = () => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{
+          float: "center",
           justifyContent: "center",
+          backgroundColor: "#87BBA2",
+          pt: 6,
         }}>
         {rooms && rooms.length
           ? rooms.map((room) => {

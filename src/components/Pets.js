@@ -9,7 +9,7 @@ import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import { CardContent } from "@mui/material";
 import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
+
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -31,11 +31,11 @@ const Pets = () => {
       container
       spacing={{ xs: 2, md: 3 }}
       columns={{ xs: 4, sm: 8, md: 12 }}
-      // justifyContent="center"
-      // display="flex"
       sx={{
         float: "center",
         justifyContent: "center",
+        backgroundColor: "#87BBA2",
+        pt: 6,
       }}>
       {pets && pets.length
         ? pets.map((pet) => {

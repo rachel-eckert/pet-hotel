@@ -15,7 +15,7 @@ router.get("/:id", async (req, res, next) => {
     const room = await Room.findByPk(req.params.id, {
       include: [{ model: Pet }],
     });
-    res.json(campus);
+    res.json(room);
   } catch (err) {
     next(err);
   }
