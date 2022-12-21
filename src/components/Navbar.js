@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 const navItems = ["Home", "Pets", "Room"];
 
@@ -32,24 +33,24 @@ function Navbar(props) {
       <Divider />
       <List>
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <ListItemText component={NavLink} to="/">
-              Home
-            </ListItemText>
+          <ListItemButton component={Link} to="/" sx={{ textAlign: "center" }}>
+            <ListItemText>Home</ListItemText>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <ListItemText component={NavLink} to="/pets">
-              Pets
-            </ListItemText>
+          <ListItemButton
+            component={Link}
+            to="/pets"
+            sx={{ textAlign: "center" }}>
+            <ListItemText>Pets</ListItemText>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <ListItemText component={NavLink} to="/rooms">
-              Rooms
-            </ListItemText>
+          <ListItemButton
+            component={Link}
+            to="/rooms"
+            sx={{ textAlign: "center" }}>
+            <ListItemText>Rooms</ListItemText>
           </ListItemButton>
         </ListItem>
       </List>
@@ -105,6 +106,8 @@ function Navbar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              bgcolor: "#3B6064",
+              color: "white",
             },
           }}>
           {drawer}

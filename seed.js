@@ -10,11 +10,12 @@ const seed = async () => {
       description:
         "The perfect room for any animal looking to enjoy some time in the cold!",
     });
-    const tropical = await Room.create({
-      name: "Tropical Room",
+    const temperate = await Room.create({
+      name: "Temperate Room",
       imageUrl:
         "https://cdn.decoist.com/wp-content/uploads/2015/05/Gorgeous-kids-bedroom-brings-home-the-tropical-style-in-a-delightful-fashion.jpg",
-      description: "The perfect room for any animal looking to stay warm..",
+      description:
+        "The perfect room for any animal looking to stay at an average temperature, who doesn't require any special environment.",
     });
     const palace = await Room.create({
       name: "Palace Room",
@@ -22,6 +23,20 @@ const seed = async () => {
         "https://i0.wp.com/www.usafurnitureonline.com/wp-content/uploads/2018/01/Homey-Design-HD-820-Royal-Palace-Sofa-Set.jpg?fit=555%2C381&ssl=1?v=1621366395",
       description:
         "An upscale room fit for any king or queen. Available at an upcharge. Includes a complimentary spa experience and a daily brushing.",
+    });
+    const desert = await Room.create({
+      name: "Desert Reptile Room",
+      imageUrl:
+        "https://img.hunkercdn.com/375/clsd/1/14/7651aacd28454a27ba9e1e1e0d11aa0e.jpg",
+      description:
+        "This room was specifically designed for reptiles requiring a dry and hot environment. Each reptile is individually housed in tanks that exceed industry standards. Tanks are monitored for temperature at all times.",
+    });
+    const tropical = await Room.create({
+      name: "Tropical Reptile Room",
+      imageUrl:
+        "https://cdn.youpic.com/large/251042_OfKeAeIWetIMzeG3_186445.jpg",
+      description:
+        "This room was specifically designed for reptiles requiring a tropical environment. Each reptile is individually housed in tanks that exceed industry standards. Tanks are monitored for humidity and temperature at all times.",
     });
     const bella = await Pet.create({
       name: "Bella",
@@ -48,7 +63,7 @@ const seed = async () => {
         "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/George_the_amazing_guinea_pig.jpg/1200px-George_the_amazing_guinea_pig.jpg",
       food: "Timothy Hay and Oxbow Food",
       age: 5,
-      roomId: tropical.id,
+      roomId: temperate.id,
     });
     const giovanni = await Pet.create({
       name: "Giovanni",
@@ -58,6 +73,41 @@ const seed = async () => {
       food: "Royal Canin",
       age: 1,
       roomId: palace.id,
+    });
+    const Raf = await Pet.create({
+      name: "Raf",
+      species: "Leopard Gecko",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmrgGqJodmGjt2N9aXjaYDlUKqO6MBYBHj8Q&usqp=CAU",
+      food: "Mealworms and crickets",
+      age: 12,
+      roomId: desert.id,
+    });
+    const cronos = await Pet.create({
+      name: "Cronos",
+      species: "Crested Gecko",
+      imageUrl: "https://a-z-animals.com/media/2022/01/crested-gecko.jpg",
+      food: "Pangea with watermelon",
+      age: 7,
+      roomId: tropical.id,
+    });
+    const ang = await Pet.create({
+      name: "Ang",
+      species: "Bearded Dragon",
+      imageUrl:
+        "https://www.everythingreptiles.com/wp-content/uploads/2020/03/Bearded-Dragon.jpg",
+      food: "Collard greens, crickets, and superworms",
+      age: 5,
+      roomId: desert.id,
+    });
+    const sol = await Pet.create({
+      name: "Sol",
+      species: "White's Tree Frog",
+      imageUrl:
+        "https://reptilesmagazine.com/wp-content/uploads/data-import/484081e3/whites-treefrog745.jpg",
+      food: "Crickets",
+      age: 2,
+      roomId: tropical.id,
     });
   } catch (err) {
     console.error(err);
