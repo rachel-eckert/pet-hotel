@@ -1,10 +1,18 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSingleRoom } from "../reducers/singleRoomSlice";
+import {
+  fetchSingleRoom,
+  selectSingleRoom,
+  updatePet,
+  unregisterPet,
+} from "../reducers/singleRoomSlice";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/system";
+
 import { useDispatch, useSelector } from "react-redux";
-import { Grid } from "@mui/material";
+
+import StyledBox from "./SingleBox";
+import StyledGrid from "./SingleGrid";
+import UpdateRoom from "./UpdateRoom";
 
 const SingleRoom = () => {
   const { id } = useParams();
@@ -12,34 +20,19 @@ const SingleRoom = () => {
   const room = useSelector((state) => state.room);
   const dispatch = useDispatch();
 
+  const roomPets = room.pets;
+
   useEffect(() => {
     dispatch(fetchSingleRoom(id));
   }, [dispatch]);
-
+  console.log(room.pets);
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      direction="column"
-      sx={{
-        bgcolor: "#87BBA2",
-        pt: 3,
-      }}>
-      <Box
-        justifyContent="center"
-        sx={{
-          display: "flex",
-          width: "60%",
-          height: "100vh",
-          bgcolor: "#C9E4CA",
-          p: 3,
-          borderRadius: "16px",
-        }}>
+    <StyledGrid container>
+      <StyledBox>
         <div>
           <div>
             <div>
-              <img className="petImg" src={room.imageUrl} />
+              <img className="roomImg" src={room.imageUrl} />
             </div>
             <p>
               <b>Name: </b>
@@ -49,20 +42,38 @@ const SingleRoom = () => {
               <b>Description: </b>
               {room.description}
             </p>
+            <div className="updateForm">
+              <UpdateRoom />
+            </div>
           </div>
 
           <div>
-            <br />
-            <h3>Pets</h3>
-            {room.pets && room.pets[0] ? (
-              room.pets.map((pet) => (
+            <h3>Pets in this room:</h3>
+            {roomPets && roomPets.length ? (
+              roomPets.map((pet) => (
                 <div>
-                  <Link key={pet.id} to={`/pets/${pet.id}`}>
+                  <Link
+                    className="pet-link"
+                    key={pet.id}
+                    to={`/pets/${pet.id}`}>
                     <p>
-                      <b>Pet Name: </b>
+                      <b>Name: </b>
                       {pet.name}
                     </p>
+                    <img className="pet-image" src={pet.imageUrl} />
                   </Link>
+                  <br />
+                  <button
+                    onClick={() =>
+                      dispatch(
+                        unregisterPet({
+                          id: pet.id,
+                          pet: { roomId: null },
+                        })
+                      )
+                    }>
+                    Unregister
+                  </button>
                 </div>
               ))
             ) : (
@@ -70,8 +81,8 @@ const SingleRoom = () => {
             )}
           </div>
         </div>
-      </Box>
-    </Grid>
+      </StyledBox>
+    </StyledGrid>
   );
 };
 

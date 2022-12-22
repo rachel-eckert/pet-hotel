@@ -32,7 +32,7 @@ router.post("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const destroyed = await Room({
+    const destroyed = await Room.destroy({
       where: { id: req.params.id },
     });
     res.json(destroyed);
@@ -46,7 +46,7 @@ router.put("/:id", async (req, res, next) => {
     const room = await Room.findByPk(req.params.id, {
       include: [{ model: Pet }],
     });
-    if (room !== null) {
+    if (room) {
       let updatedRoom = await Room.update(req.body);
       res.json(updatedRoom);
     } else {

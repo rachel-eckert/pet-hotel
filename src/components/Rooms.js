@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import DeleteIcon from "@mui/icons-material/Delete";
-
+import StyledAllGrid from "./AllItemsGrid";
 const Rooms = () => {
   const dispatch = useDispatch();
   const rooms = useSelector(roomList);
@@ -28,16 +28,10 @@ const Rooms = () => {
 
   return (
     <div id="rooms" className="column">
-      <Grid
+      <StyledAllGrid
         container
         spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{
-          float: "center",
-          justifyContent: "center",
-          backgroundColor: "#87BBA2",
-          pt: 6,
-        }}>
+        columns={{ xs: 4, sm: 8, md: 12 }}>
         {rooms && rooms.length
           ? rooms.map((room) => {
               return (
@@ -105,7 +99,7 @@ const Rooms = () => {
         {/* <div className="new-room-form">
           <NewRoom />
         </div> */}
-      </Grid>
+      </StyledAllGrid>
     </div>
   );
 };

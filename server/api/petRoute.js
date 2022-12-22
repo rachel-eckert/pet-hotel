@@ -46,8 +46,8 @@ router.put("/:id", async (req, res, next) => {
     const pet = await Pet.findByPk(req.params.id, {
       include: [{ model: Room }],
     });
-    if (pet !== null) {
-      let updatedPet = await Pet.update(req.body);
+    if (pet) {
+      let updatedPet = await pet.update(req.body);
       res.json(updatedPet);
     }
   } catch (err) {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPets, deletePet, petList } from "../reducers/petSlice";
 // import NewPet from "./NewPet";
-
+import StyledAllGrid from "./AllItemsGrid";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
@@ -16,7 +16,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const Pets = () => {
   const dispatch = useDispatch();
-  const pets = useSelector(petList);
+  const pets = useSelector((state) => state.pets);
 
   const removePet = async (pet) => {
     dispatch(deletePet(pet.id));
@@ -27,16 +27,10 @@ const Pets = () => {
   }, [dispatch]);
 
   return (
-    <Grid
+    <StyledAllGrid
       container
       spacing={{ xs: 2, md: 3 }}
-      columns={{ xs: 4, sm: 8, md: 12 }}
-      sx={{
-        float: "center",
-        justifyContent: "center",
-        backgroundColor: "#87BBA2",
-        pt: 6,
-      }}>
+      columns={{ xs: 4, sm: 8, md: 12 }}>
       {pets && pets.length
         ? pets.map((pet) => {
             return (
@@ -104,7 +98,7 @@ const Pets = () => {
       {/* <div className="new-pet-form">
           <NewPet />
         </div> */}
-    </Grid>
+    </StyledAllGrid>
   );
 };
 

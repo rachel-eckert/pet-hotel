@@ -25,11 +25,12 @@ export const unregisterPet = createAsyncThunk(
 );
 export const updateRoom = createAsyncThunk(
   "rooms/update",
-  async ({ id, name, description }) => {
+  async ({ id, name, description, imageUrl }) => {
     try {
       const { data } = await axios.put(`/api/rooms/${id}`, {
         name,
         description,
+        imageUrl,
       });
       return data;
     } catch (err) {
@@ -49,13 +50,7 @@ const singleRoomSlice = createSlice({
       return action.payload;
     });
     builder.addCase(unregisterPet.fulfilled, (state, action) => {
-      //return state.filter((student) => student.id == action.payload.id)
-      //<-- does not work? bottom does. figure out the difference! something with the splice?
-      for (let i = 0; i < state.pets.length; i++) {
-        if (state.pets[i].id === action.payload.id) {
-          state.pets.splice(i, 1);
-        }
-      }
+      state.pets = state.pets.filter((pet) => pet.id !== action.payload.id);
     });
   },
 });

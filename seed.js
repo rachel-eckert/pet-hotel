@@ -109,6 +109,8 @@ const seed = async () => {
       age: 2,
       roomId: tropical.id,
     });
+    db.close();
+    console.log("seeding successful");
   } catch (err) {
     console.error(err);
     db.close();

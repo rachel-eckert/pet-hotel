@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@mui/material";
+import StyledBox from "./SingleBox";
+import StyledGrid from "./SingleGrid";
+import UpdatePet from "./UpdatePet";
+
 const SinglePet = () => {
   const { id } = useParams();
 
@@ -16,25 +20,8 @@ const SinglePet = () => {
   }, [dispatch]);
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      direction="column"
-      sx={{
-        bgcolor: "#87BBA2",
-        pt: 3,
-      }}>
-      <Box
-        justifyContent="center"
-        sx={{
-          display: "flex",
-          width: "60%",
-          height: "100vh",
-          bgcolor: "#C9E4CA",
-          p: 3,
-          borderRadius: "16px",
-        }}>
+    <StyledGrid container>
+      <StyledBox>
         <div>
           <div>
             <div>
@@ -56,6 +43,9 @@ const SinglePet = () => {
               <b>Age: </b>
               {pet.age}
             </p>
+            <div className="updateForm">
+              <UpdatePet />
+            </div>
           </div>
 
           <div>
@@ -63,7 +53,10 @@ const SinglePet = () => {
             <h3>Room</h3>
             {pet.room ? (
               <div>
-                <Link to={`/rooms/${pet.room.id}`}>
+                <Link
+                  key={pet.room.id}
+                  className="pet-link"
+                  to={`/rooms/${pet.room.id}`}>
                   <p>{pet.room.name}</p>
                 </Link>
               </div>
@@ -72,8 +65,8 @@ const SinglePet = () => {
             )}
           </div>
         </div>
-      </Box>
-    </Grid>
+      </StyledBox>
+    </StyledGrid>
   );
 };
 
