@@ -23,8 +23,8 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const newCampus = await Campus.create(req.body);
-    res.json(newCampus);
+    const newRoom = await Room.create(req.body);
+    res.json(newRoom);
   } catch (err) {
     next(err);
   }
@@ -47,7 +47,7 @@ router.put("/:id", async (req, res, next) => {
       include: [{ model: Pet }],
     });
     if (room) {
-      let updatedRoom = await Room.update(req.body);
+      let updatedRoom = await room.update(req.body);
       res.json(updatedRoom);
     } else {
       res.sendStatus(404);

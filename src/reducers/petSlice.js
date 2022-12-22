@@ -10,9 +10,9 @@ export const fetchPets = createAsyncThunk("/pets", async () => {
   }
 });
 
-export const addNewPet = createAsyncThunk("pets/add", async (newPet) => {
+export const addNewPet = createAsyncThunk("pets/add", async (pet) => {
   try {
-    const { data } = await axios.post("/api/pets", newPet);
+    const { data } = await axios.post("/api/pets", pet);
     return data;
   } catch (err) {
     return err.message;

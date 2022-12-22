@@ -1,57 +1,40 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNewPet } from "../reducers/petSlice";
+import { addNewRoom } from "../reducers/roomSlice";
+import { useNavigate } from "react-router-dom";
 import { TextField, Grid, Button } from "@mui/material";
-import { pink } from "@mui/material/colors";
-import { styled } from "@mui/system";
-const NewPet = () => {
-  const dispatch = useDispatch();
 
+const NewRoom = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [species, setSpecies] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [food, setFood] = useState("");
-  const [age, setAge] = useState("");
-  const [roomId, setRoomId] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-  const handleSpeciesChange = (event) => {
-    setSpecies(event.target.value);
-  };
   const handleImageChange = (event) => {
     setImageUrl(event.target.value);
   };
-  const handleFoodChange = (event) => {
-    setFood(event.target.value);
-  };
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
-  };
-  const handleRoomChange = (event) => {
-    setRoomId(event.target.value);
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch(
-      addNewPet({
+      addNewRoom({
         name,
-        species,
         imageUrl,
-        food,
-        age,
-        roomId,
+        description,
       })
     );
     setName("");
-    setSpecies("");
     setImageUrl("");
-    setFood("");
-    setAge("");
-    setRoomId("");
+    setDescription("");
+    navigate("/rooms");
   };
 
   return (
@@ -62,12 +45,12 @@ const NewPet = () => {
         justifyContent="center"
         direction="column">
         <label align="center" className="header">
-          Check In a New Pet to the Hotel!
+          Construct a New Room!
         </label>
         <form
           align="center"
           className="form"
-          id="new-pet-form"
+          id="new-room-form"
           onSubmit={handleSubmit}>
           <Grid
             item
@@ -76,7 +59,7 @@ const NewPet = () => {
             }}>
             <TextField
               className="submission-field"
-              label="Name"
+              placeholder="Name"
               value={name}
               onChange={handleNameChange}
             />
@@ -88,33 +71,9 @@ const NewPet = () => {
             }}>
             <TextField
               className="submission-field"
-              label="Species"
-              value={species}
-              onChange={handleSpeciesChange}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              mt: 2,
-            }}>
-            <TextField
-              className="submission-field"
-              label="Profile Picture"
+              placeholder="Inspiration Picture"
               value={imageUrl}
               onChange={handleImageChange}
-            />{" "}
-          </Grid>
-          <Grid
-            item
-            sx={{
-              mt: 2,
-            }}>
-            <TextField
-              className="submission-field"
-              label="Food Brand"
-              value={food}
-              onChange={handleFoodChange}
             />
           </Grid>
           <Grid
@@ -124,21 +83,9 @@ const NewPet = () => {
             }}>
             <TextField
               className="submission-field"
-              label="Age"
-              value={age}
-              onChange={handleAgeChange}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              mt: 2,
-            }}>
-            <TextField
-              className="submission-field"
-              label="Room Request"
-              value={roomId}
-              onChange={handleRoomChange}
+              placeholder="Describe the Room"
+              value={description}
+              onChange={handleDescriptionChange}
             />
           </Grid>
           <Grid
@@ -162,4 +109,4 @@ const NewPet = () => {
   );
 };
 
-export default NewPet;
+export default NewRoom;

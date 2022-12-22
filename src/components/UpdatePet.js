@@ -6,6 +6,7 @@ import {
   fetchSinglePet,
   selectSinglePet,
 } from "../reducers/singlePetSlice";
+import { TextField, Grid, Button } from "@mui/material";
 
 const UpdatePet = () => {
   const { id } = useParams();
@@ -56,38 +57,62 @@ const UpdatePet = () => {
       <h3 className="header" align="center">
         Update {pet.name}'s information below:
       </h3>
-      <form className="form" algin="center" onSubmit={handleNameSubmit}>
-        <input
+      <form className="update-form" align="center" onSubmit={handleNameSubmit}>
+        <TextField
           className="submission-field"
-          placeholder="Name"
+          label="Name"
           value={name || ""}
           onChange={handleName}
+          sx={{
+            bgcolor: "#FFFFFF",
+          }}
         />
-        <button className="button" align="center" type="submit">
+        <Button
+          variant="contained"
+          className="update-button"
+          align="center"
+          type="submit"
+          sx={{ bgcolor: "#55828B", width: 150, ml: 1.5 }}>
           Update Name
-        </button>
+        </Button>
       </form>
-      <form className="form" align="center" onSubmit={handleFoodSubmit}>
-        <input
+      <form className="update-form" align="center" onSubmit={handleFoodSubmit}>
+        <TextField
           className="submission-field"
-          placeholder="Food"
+          label="Food"
           value={food || ""}
           onChange={handleFood}
+          sx={{
+            bgcolor: "#FFFFFF",
+          }}
         />
-        <button className="button" type="submit">
+        <Button
+          variant="contained"
+          className="update-button"
+          align="center"
+          type="submit"
+          sx={{ bgcolor: "#55828B", width: 150, ml: 1.5 }}>
           Update Food
-        </button>
+        </Button>
       </form>
-      <form className="form" align="center" onSubmit={handleAgeSubmit}>
-        <input
+      <form className="update-form" align="center" onSubmit={handleAgeSubmit}>
+        <TextField
           className="submission-field"
-          placeholder="Age"
+          label="Age"
           value={age || ""}
           onChange={handleAge}
+          sx={{
+            bgcolor: "#FFFFFF",
+          }}
         />
-        <button className="button" type="submit">
+        <Button
+          variant="contained"
+          className="update-button"
+          align="center"
+          type="submit"
+          sx={{ bgcolor: "#55828B", width: 150, ml: 1.5 }}>
           Update Age
-        </button>
+        </Button>
       </form>
     </div>
   );

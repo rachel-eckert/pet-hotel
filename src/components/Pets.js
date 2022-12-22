@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPets, deletePet, petList } from "../reducers/petSlice";
-// import NewPet from "./NewPet";
+import NewPet from "./NewPet";
 import StyledAllGrid from "./AllItemsGrid";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import { CardContent } from "@mui/material";
 import Card from "@mui/material/Card";
-
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -95,9 +94,6 @@ const Pets = () => {
             );
           })
         : null}
-      {/* <div className="new-pet-form">
-          <NewPet />
-        </div> */}
     </StyledAllGrid>
   );
 };

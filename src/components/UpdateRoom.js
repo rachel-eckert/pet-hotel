@@ -6,6 +6,7 @@ import {
   fetchSingleRoom,
   selectSingleRoon,
 } from "../reducers/singleRoomSlice";
+import { TextField, Grid, Button } from "@mui/material";
 
 const UpdatePet = () => {
   const { id } = useParams();
@@ -35,7 +36,7 @@ const UpdatePet = () => {
 
   const handleDescriptionSubmit = async (event) => {
     event.preventDefault();
-    await dispatch(updatRoom({ id, description }));
+    await dispatch(updateRoom({ id, description }));
     setDescription("");
   };
 
@@ -56,44 +57,67 @@ const UpdatePet = () => {
       <h3 className="header" align="center">
         Update {room.name}'s information below:
       </h3>
-      <form className="form" algin="center" onSubmit={handleNameSubmit}>
-        <textarea
-          rows={1}
-          cols={20}
+      <form className="update-form" algin="center" onSubmit={handleNameSubmit}>
+        <TextField
           className="submission-field"
-          placeholder="Name"
+          label="Name"
           value={name || ""}
           onChange={handleName}
+          sx={{
+            bgcolor: "#FFFFFF",
+          }}
         />
-        <button className="room-button" align="center" type="submit">
+        <Button
+          variant="contained"
+          className="update-button"
+          align="center"
+          type="submit"
+          sx={{ bgcolor: "#55828B", width: 150, ml: 1.5 }}>
           Update Name
-        </button>
+        </Button>
       </form>
-      <form className="form" align="center" onSubmit={handleImageSubmit}>
-        <textarea
-          rows={1}
-          cols={20}
+      <form className="update-form" align="center" onSubmit={handleImageSubmit}>
+        <TextField
           className="submission-field"
-          placeholder="Image URL"
+          label="Image URL"
           value={imageUrl || ""}
           onChange={handleImage}
+          sx={{
+            bgcolor: "#FFFFFF",
+          }}
         />
-        <button className="room-button" type="submit">
-          Update Image
-        </button>
+        <Button
+          variant="contained"
+          className="update-button"
+          align="center"
+          type="submit"
+          sx={{ bgcolor: "#55828B", width: 150, ml: 1.5 }}>
+          Update Photo
+        </Button>
       </form>
-      <form className="form" align="center" onSubmit={handleDescriptionSubmit}>
-        <textarea
+      <form
+        className="update-form"
+        align="center"
+        onSubmit={handleDescriptionSubmit}>
+        <TextField
+          multiline
           rows={4}
-          cols={20}
           className="submission-field"
-          placeholder="Description"
+          label="Description"
           value={description || ""}
           onChange={handleDescription}
+          sx={{
+            bgcolor: "#FFFFFF",
+          }}
         />
-        <button className="room-button" type="submit">
+        <Button
+          variant="contained"
+          className="button"
+          align="center"
+          type="submit"
+          sx={{ bgcolor: "#55828B", width: 150, ml: 1.5 }}>
           Update Description
-        </button>
+        </Button>
       </form>
     </div>
   );

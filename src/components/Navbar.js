@@ -53,6 +53,22 @@ function Navbar(props) {
             <ListItemText>Rooms</ListItemText>
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton
+            component={Link}
+            to="/addpet"
+            sx={{ textAlign: "center" }}>
+            <ListItemText>Add New Pet</ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton
+            component={Link}
+            to="/addroom"
+            sx={{ textAlign: "center" }}>
+            <ListItemText>Add New Room</ListItemText>
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );

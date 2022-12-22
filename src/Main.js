@@ -6,6 +6,7 @@ import Rooms from "./components/Rooms";
 import SinglePet from "./components/SinglePet";
 import SingleRoom from "./components/SingleRoom";
 import NewPet from "./components/NewPet";
+import NewRoom from "./components/NewRoom";
 const Main = () => {
   return (
     <Router className="main">
@@ -17,6 +18,7 @@ const Main = () => {
         <Route path="/pets/:id" element={<SinglePet />} />
         <Route path="/rooms/:id" element={<SingleRoom />} />
         <Route path="/addpet" element={<NewPet />} />
+        <Route path="/addroom" element={<NewRoom />} />
       </Routes>
     </Router>
   );
