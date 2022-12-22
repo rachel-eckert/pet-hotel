@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNewPet } from "../reducers/petSlice";
 import { TextField, Grid, Button } from "@mui/material";
-import { pink } from "@mui/material/colors";
-import { styled } from "@mui/system";
+import { useNavigate } from "react-router-dom";
+
 const NewPet = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [species, setSpecies] = useState("");
@@ -52,6 +53,7 @@ const NewPet = () => {
     setFood("");
     setAge("");
     setRoomId("");
+    navigate("/pets");
   };
 
   return (
@@ -103,7 +105,7 @@ const NewPet = () => {
               label="Profile Picture"
               value={imageUrl}
               onChange={handleImageChange}
-            />{" "}
+            />
           </Grid>
           <Grid
             item

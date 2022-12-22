@@ -26,6 +26,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const newPet = await Pet.create(req.body);
+    console.log(req.body);
     res.json(newPet);
   } catch (err) {
     next(err);
@@ -44,7 +45,7 @@ router.delete("/:id", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const pet = await Pet.findByPk(req.params.id, {
-      include: [{ model: Room }],
+      include: { model: Room },
     });
     if (pet) {
       let updatedPet = await pet.update(req.body);

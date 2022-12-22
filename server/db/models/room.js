@@ -12,7 +12,7 @@ module.exports = db.define("rooms", {
   imageUrl: {
     type: Sequelize.TEXT,
     defaultValue:
-      "https://media.cntraveler.com/photos/6310f9a1ef65dcb9b6e51113/master/w_4272,h_2848,c_limit/Corvin-Castle,-Romania-GettyImages-505538365.jpg",
+      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kids-rooms-hbx090117sherwin01-1558467850.jpg",
   },
   description: {
     type: Sequelize.TEXT("long"),
